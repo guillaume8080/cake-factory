@@ -25,7 +25,7 @@ namespace CakeMachine.Fabrication.Opérations
 
         private void VérifierNombreGâteaux(IReadOnlyCollection<GâteauCru> gâteaux)
         {
-            Console.WriteLine(_nombrePlaces);
+            //Console.WriteLine(_nombrePlaces);
             if (gâteaux.Count > _nombrePlaces)
                 throw new InvalidOperationException(
                     $"Le poste de Cuisson ne peut pas accepter plus de {_nombrePlaces} gâteaux en même temps.");

@@ -8,8 +8,14 @@ namespace CakeMachine.Simulation
         /// <inheritdoc />
         public override bool SupportsSync => true;
         GâteauCru[] arrayOfGateauCru = new GâteauCru[] {};
-        private GâteauCuit[] arrayOfGateauCuits = new GâteauCuit[] {};
+        private GâteauCuit[] arrayOfGateauCuits = new GâteauCuit[0] {};
         private GâteauEmballé[] aOfGEmballe = new GâteauEmballé[] {};
+
+
+        private List<GâteauCru> listOfGateauCru = new();
+        private List<GâteauCuit> listOfGateauCuit = new();
+
+        private List<GâteauEmballé> ListGatEmballe = new();
         //T[] array = new T[] {}
         
 
@@ -21,44 +27,40 @@ namespace CakeMachine.Simulation
                 
                 
                 // Cuisson._nbDePlaces == 5
-                for (int i = 0; i < 5; i++)
+                for (int i = 1; i < 5; i++)
                 {
                     
                    
                     var plat = new Plat();
 
                     var gâteauCru = usine.Préparateurs.First().Préparer(plat);
-                    arrayOfGateauCru.Append(gâteauCru);
+                    listOfGateauCru.Add(gâteauCru);
                     
                     
                     
 
-                    if (i == 4)
-                    {
-                        Console.WriteLine("nombre de places dans le four atteint");
-                        
-                    }
+                  
                     // yield return gâteauEmballé;
                 }
 
-                for (int j = 0; j < arrayOfGateauCru.Length; j++)
+                for (int j = 0; j < listOfGateauCru.Count; j++)
                 {
                     // // Cuisson.cuire
 
-                    var unGateauCuit = usine.Fours.First().Cuire(arrayOfGateauCru).Single();
-                    arrayOfGateauCuits.Append(unGateauCuit);
+                    var unGateauCuit = usine.Fours.First().Cuire(listOfGateauCru.ElementAt(j)).Single();
+                    listOfGateauCuit.Add(unGateauCuit);
                 }
 
-                for (int k = 0; k < arrayOfGateauCuits.Length; k++)
+                for (int k = 0; k < listOfGateauCuit.Count; k++)
                 {
-                    var gâteauEmballé = usine.Emballeuses.First().Emballer(arrayOfGateauCuits[k]);
-                    aOfGEmballe.Append(gâteauEmballé);
+                    var gâteauEmballé = usine.Emballeuses.First().Emballer(listOfGateauCuit.ElementAt(k));
+                    ListGatEmballe.Add(gâteauEmballé);
 
                 }
 
-                for (int l = 0; l < aOfGEmballe.Length; l++)
+                for (int l = 0; l < ListGatEmballe.Count; l++)
                 {
-                    yield return aOfGEmballe[l];
+                    yield return ListGatEmballe.ElementAt(l);
                 }
 
 
