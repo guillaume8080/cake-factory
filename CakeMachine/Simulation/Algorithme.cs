@@ -8,7 +8,10 @@ namespace CakeMachine.Simulation
         public virtual bool SupportsAsync => false;
         public virtual bool SupportsSync => false;
 
-        public virtual void ConfigurerUsine(IConfigurationUsine builder) { }
+        public virtual void ConfigurerUsine(IConfigurationUsine builder)
+        {
+            
+        }
 
         public virtual IEnumerable<GâteauEmballé> Produire(Usine usine, CancellationToken token)
         {

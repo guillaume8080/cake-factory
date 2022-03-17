@@ -36,29 +36,15 @@ namespace CakeMachine.Simulation
 
                 }
                 var  enumOfGateaux = (IEnumerable<CakeMachine.Fabrication.Elements.GâteauEmballé>)mesGateaux ;
-               //  yield return enumOfGateaux;
-                //yield return unGateau(usine, 2);
+               
 
             }
         }
 
-        public  System.Collections.Generic.IEnumerable<GâteauEmballé> unGateau(Usine usine , int iterer)
-        {
-            for(int i = iterer;i < 1; i++)
-            {
-                var plat = new Plat();
-
-                var gâteauCru = usine.Préparateurs.First().Préparer(plat);
-                var gâteauCuit = usine.Fours.First().Cuire(gâteauCru).Single();
-                var gâteauEmballé = usine.Emballeuses.First().Emballer(gâteauCuit);
-
-                yield return gâteauEmballé;   
-            }
-          
-        }
+       
         
 
-
+//AlgoCuisson
 
 
         }

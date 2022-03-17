@@ -26,6 +26,7 @@ namespace CakeMachine.Utils
             {
                 var builder = new UsineBuilder();
                 algorithme.ConfigurerUsine(builder);
+                
                 var usine = builder.Build();
 
                 if (algorithme.SupportsSync)
