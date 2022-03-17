@@ -12,6 +12,9 @@ namespace CakeMachine.Simulation
 
         public virtual IEnumerable<GâteauEmballé> Produire(Usine usine, CancellationToken token)
         {
+            // stocker 2 gateaux dans l enumerable
+            // yield return usine.Préparateurs.Préparer();
+            
             throw new NotImplementedException();
         }
 

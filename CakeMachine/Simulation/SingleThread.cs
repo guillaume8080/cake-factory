@@ -18,8 +18,14 @@ namespace CakeMachine.Simulation
                 var gâteauCru = usine.Préparateurs.First().Préparer(plat);
                 var gâteauCuit = usine.Fours.First().Cuire(gâteauCru).Single();
                 var gâteauEmballé = usine.Emballeuses.First().Emballer(gâteauCuit);
-
+                    
+                
                 yield return gâteauEmballé;
+
+                
+                
+                    
+                
             }
         }
     }

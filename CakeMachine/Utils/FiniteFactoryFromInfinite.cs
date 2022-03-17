@@ -30,7 +30,7 @@ namespace CakeMachine.Utils
             /// <inheritdoc />
             public IAsyncEnumerator<GâteauEmballé> GetAsyncEnumerator(CancellationToken cancellationToken = new())
                 => new Enumerator(_algorithme, _nombreGâteaux, _usine, cancellationToken);
-
+            
             private class Enumerator : IAsyncEnumerator<GâteauEmballé>
             {
                 private readonly CancellationTokenSource _cancellationTokenSource;
