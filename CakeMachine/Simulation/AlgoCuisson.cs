@@ -25,7 +25,7 @@ namespace CakeMachine.Simulation
             while (!token.IsCancellationRequested)
             {
                 
-                
+                // usine.Fours.First().Cuire()
                 
                 for (int i = 1; i < 5; i++)
                 {
@@ -37,10 +37,6 @@ namespace CakeMachine.Simulation
                     listOfGateauCru.Add(gâteauCru);
                     
                     
-                    
-
-                  
-                    // yield return gâteauEmballé;
                 }
                 
                 // Cette methode n est pas correcte , on appelle non pas la mehode Cuire avec un gateau mais un tabelau
