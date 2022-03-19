@@ -36,16 +36,19 @@ namespace CakeMachine.Simulation
 
                 }
                 var  enumOfGateaux = (IEnumerable<CakeMachine.Fabrication.Elements.GâteauEmballé>)mesGateaux ;
+        
                
 
             }
+        
         }
 
-       
         
+
+
 
 //AlgoCuisson
 
 
-        }
+    }
 }

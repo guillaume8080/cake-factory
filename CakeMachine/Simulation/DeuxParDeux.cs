@@ -24,9 +24,9 @@ namespace CakeMachine.Simulation
                 var plats = new[] { new Plat(), new Plat() };
                 var gâteauxCrus = plats
                      // tu appelles le traitement Preparer sur chacun des plats   
-                    .Select(postePréparation.Préparer)
-                    .AsParallel()
-                    .ToArray();
+                     .AsParallel()
+                     .Select(postePréparation.Préparer)
+                     .ToArray();
 
                 var gâteauxCuits = posteCuisson.Cuire(gâteauxCrus);
 
