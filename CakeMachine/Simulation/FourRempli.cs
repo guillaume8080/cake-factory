@@ -1,10 +1,12 @@
+
 using System.Runtime.CompilerServices;
 using CakeMachine.Fabrication;
 using CakeMachine.Fabrication.Elements;
+using CakeMachine.Utils;
 
 namespace CakeMachine.Simulation
 {
-    internal class DeuxParDeux : Algorithme
+    internal class FourRempli : Algorithme
     {
         /// <inheritdoc />
         public override bool SupportsSync => true;
@@ -13,6 +15,13 @@ namespace CakeMachine.Simulation
         public override bool SupportsAsync => true;
 
         /// <inheritdoc />
+        public override void ConfigurerUsine(IConfigurationUsine builder)
+        {
+            base.ConfigurerUsine(builder);
+            // builder.NombreEmballeuses = 30;
+            
+        }
+
         public override IEnumerable<GâteauEmballé> Produire(Usine usine, CancellationToken token)
         {
             var postePréparation = usine.Préparateurs.Single();
@@ -21,19 +30,19 @@ namespace CakeMachine.Simulation
 
             while (!token.IsCancellationRequested)
             {
-                var plats = new[] { new Plat(), new Plat() };
+                
+                var plats = Enumerable.Range(0, usine.OrganisationUsine.ParamètresCuisson.NombrePlaces)
+                    .Select(_ => new Plat());
+
                 var gâteauxCrus = plats
-                     //Reparation gateaux plus rapi  
-                     .AsParallel()
-                     .Select(postePréparation.Préparer)
-                     .ToArray();
+                    .AsParallel()
+                    .Select(postePréparation.Préparer)
+                    .ToArray();
 
                 var gâteauxCuits = posteCuisson.Cuire(gâteauxCrus);
-
                 var gâteauxEmballés = gâteauxCuits
                     .AsParallel()
                     .Select(posteEmballage.Emballer);
-                    
 
                 foreach (var gâteauEmballé in gâteauxEmballés)
                     yield return gâteauEmballé;
@@ -49,30 +58,21 @@ namespace CakeMachine.Simulation
 
             while (!token.IsCancellationRequested)
             {
-                var plat1 = new Plat();
-                var plat2 = new Plat();
-                
-                var gâteauCru1Task = postePréparation.PréparerAsync(plat1);
-                var gâteauCru2Task = postePréparation.PréparerAsync(plat2);
+                var plats = Enumerable
+                    .Range(0, usine.OrganisationUsine.ParamètresCuisson.NombrePlaces)
+                    .Select(_ => new Plat());
 
-                var gâteauxCrus = await Task.WhenAll(gâteauCru1Task, gâteauCru2Task);
-               
+                var gâteauxCrus = await Task.WhenAll(plats.Select(postePréparation.PréparerAsync));
+                var gâteauxCuits = await posteCuisson.CuireAsync(gâteauxCrus.ToArray());
 
-                var gâteauxCuits = await posteCuisson.CuireAsync(gâteauxCrus);
-                
-                
+                var gâteauxEmballés = gâteauxCuits
+                    .Select(posteEmballage.EmballerAsync)
+                    .EnumerateCompleted();
 
-                var gâteauEmballé1Task = posteEmballage.EmballerAsync(gâteauxCuits.First());
-                var gâteauEmballé2Task = posteEmballage.EmballerAsync(gâteauxCuits.Last());
-
-                var terminéeEnPremier = await Task.WhenAny(gâteauEmballé1Task, gâteauEmballé2Task);
-                yield return await terminéeEnPremier;
-
-                var terminéeEnDernier =
-                    gâteauEmballé1Task == terminéeEnPremier ? gâteauEmballé2Task : gâteauEmballé1Task;
-
-                yield return await terminéeEnDernier;
+                await foreach (var gâteauEmballé in gâteauxEmballés.WithCancellation(token))
+                    yield return gâteauEmballé;
             }
         }
+        
     }
 }

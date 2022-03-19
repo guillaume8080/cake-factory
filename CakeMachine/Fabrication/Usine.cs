@@ -21,6 +21,7 @@ namespace CakeMachine.Fabrication
             OrganisationUsine = organisationUsine;
 
             Préparateurs = Enumerable
+                    //.Range(1er de lenum, dernier de l enume)
                 .Range(0, organisationUsine.NombrePréparateurs)
                 .Select(_ => new Préparation(rng.Fork(), organisationUsine.ParamètresPréparation));
 

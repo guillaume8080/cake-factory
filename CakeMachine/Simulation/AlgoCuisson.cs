@@ -6,7 +6,7 @@ namespace CakeMachine.Simulation
     internal class AlgoCuisson : Algorithme
     {
         /// <inheritdoc />
-        public override bool SupportsSync => true;
+        public override bool SupportsSync => false;
         GâteauCru[] arrayOfGateauCru = new GâteauCru[] {};
         private GâteauCuit[] arrayOfGateauCuits = new GâteauCuit[0] {};
         private GâteauEmballé[] aOfGEmballe = new GâteauEmballé[] {};

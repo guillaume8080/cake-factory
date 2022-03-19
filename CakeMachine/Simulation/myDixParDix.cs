@@ -4,7 +4,7 @@ using CakeMachine.Fabrication.Elements;
 
 namespace CakeMachine.Simulation
 {
-    internal class DeuxParDeux : Algorithme
+    internal class myDixParDix : Algorithme
     {
         /// <inheritdoc />
         public override bool SupportsSync => true;
@@ -21,9 +21,9 @@ namespace CakeMachine.Simulation
 
             while (!token.IsCancellationRequested)
             {
-                var plats = new[] { new Plat(), new Plat() };
+                var plats = new[] { new Plat(), new Plat() , new Plat()};
                 var gâteauxCrus = plats
-                     //Reparation gateaux plus rapi  
+                     // tu appelles le traitement Preparer sur chacun des plats   
                      .AsParallel()
                      .Select(postePréparation.Préparer)
                      .ToArray();
@@ -51,21 +51,21 @@ namespace CakeMachine.Simulation
             {
                 var plat1 = new Plat();
                 var plat2 = new Plat();
+                var plat3 = new Plat();
                 
                 var gâteauCru1Task = postePréparation.PréparerAsync(plat1);
                 var gâteauCru2Task = postePréparation.PréparerAsync(plat2);
-
-                var gâteauxCrus = await Task.WhenAll(gâteauCru1Task, gâteauCru2Task);
-               
+                var gâteauCru3Task = postePréparation.PréparerAsync(plat3);
+                
+                var gâteauxCrus = await Task.WhenAll(gâteauCru1Task, gâteauCru2Task,gâteauCru3Task);
 
                 var gâteauxCuits = await posteCuisson.CuireAsync(gâteauxCrus);
-                
-                
+                    
+                var gâteauEmballé1Task = posteEmballage.EmballerAsync(gâteauxCuits[0]);
+                var gâteauEmballé2Task = posteEmballage.EmballerAsync(gâteauxCuits[1]);
+                var gâteauEmballé3Task = posteEmballage.EmballerAsync(gâteauxCuits[2]);
 
-                var gâteauEmballé1Task = posteEmballage.EmballerAsync(gâteauxCuits.First());
-                var gâteauEmballé2Task = posteEmballage.EmballerAsync(gâteauxCuits.Last());
-
-                var terminéeEnPremier = await Task.WhenAny(gâteauEmballé1Task, gâteauEmballé2Task);
+                var terminéeEnPremier = await Task.WhenAny(gâteauEmballé1Task, gâteauEmballé2Task, gâteauEmballé3Task);
                 yield return await terminéeEnPremier;
 
                 var terminéeEnDernier =

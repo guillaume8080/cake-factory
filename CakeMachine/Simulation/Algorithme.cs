@@ -8,6 +8,7 @@ namespace CakeMachine.Simulation
         public virtual bool SupportsAsync => false;
         public virtual bool SupportsSync => false;
 
+        // methyode virtual : methode destinee à être surchargee ...
         public virtual void ConfigurerUsine(IConfigurationUsine builder)
         {
             

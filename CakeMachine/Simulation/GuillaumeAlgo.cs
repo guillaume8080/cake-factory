@@ -6,7 +6,7 @@ namespace CakeMachine.Simulation
     internal class GuillaumeAlgo : Algorithme
     {
         /// <inheritdoc />
-        public override bool SupportsSync => true;
+        public override bool SupportsSync => false;
 
         private List<GâteauEmballé> mesGateaux = new List<GâteauEmballé>();
         /// <inheritdoc />
