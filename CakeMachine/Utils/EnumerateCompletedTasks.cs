@@ -1,4 +1,4 @@
-namespace CakeMachine.Utils
+﻿namespace CakeMachine.Utils
 {
     internal class EnumerateCompletedTasks<T> : IAsyncEnumerable<T>
     {

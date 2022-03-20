@@ -4,13 +4,15 @@ using CakeMachine.Utils;
 
 namespace CakeMachine.Fabrication.Opérations
 {
-    internal class Cuisson
+    public class Cuisson
     {
         private readonly ThreadSafeRandomNumberGenerator _rng;
         private readonly TimeSpan _tempsCuisson;
         private readonly ushort _nombrePlaces;
         private readonly double _defectRate;
-
+        // oui , j'ai fini par trouver...
+        // Si on se fit à la consigne on passe son temps à attendre
+        // 1 seul thread peut acceder à cette ressource
         private readonly SemaphoreSlim _lock = new(1);
 
         public Cuisson(ThreadSafeRandomNumberGenerator rng, ParamètresCuisson paramètres)
@@ -25,7 +27,6 @@ namespace CakeMachine.Fabrication.Opérations
 
         private void VérifierNombreGâteaux(IReadOnlyCollection<GâteauCru> gâteaux)
         {
-            //Console.WriteLine(_nombrePlaces);
             if (gâteaux.Count > _nombrePlaces)
                 throw new InvalidOperationException(
                     $"Le poste de Cuisson ne peut pas accepter plus de {_nombrePlaces} gâteaux en même temps.");
@@ -41,7 +42,7 @@ namespace CakeMachine.Fabrication.Opérations
             try 
             {
                 VérifierNombreGâteaux(gâteaux);
-                Thread.Sleep(_tempsCuisson);
+                AttenteIncompressible.Attendre(_tempsCuisson);
                 return Factory(gâteaux);
             } 
             finally
@@ -57,7 +58,7 @@ namespace CakeMachine.Fabrication.Opérations
             try
             {
                 VérifierNombreGâteaux(gâteaux);
-                await Task.Delay(_tempsCuisson);
+                await AttenteIncompressible.AttendreAsync(_tempsCuisson);
                 return Factory(gâteaux);
             }
             finally

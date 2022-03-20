@@ -4,7 +4,7 @@ using CakeMachine.Utils;
 
 namespace CakeMachine.Fabrication
 {
-    internal class Usine
+    public class Usine
     {
         public ParamètresUsine OrganisationUsine { get; }
         public const ushort TailleMaxUsine = 35;
@@ -21,7 +21,6 @@ namespace CakeMachine.Fabrication
             OrganisationUsine = organisationUsine;
 
             Préparateurs = Enumerable
-                    //.Range(1er de lenum, dernier de l enume)
                 .Range(0, organisationUsine.NombrePréparateurs)
                 .Select(_ => new Préparation(rng.Fork(), organisationUsine.ParamètresPréparation));
 

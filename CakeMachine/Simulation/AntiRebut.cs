@@ -1,4 +1,4 @@
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using CakeMachine.Fabrication;
 using CakeMachine.Fabrication.Elements;
 
@@ -27,11 +27,7 @@ namespace CakeMachine.Simulation
                 do gâteauCru = postePréparation.Préparer(plat);
                 while (!gâteauCru.EstConforme);
                 
-                
                 var gâteauCuit = posteCuisson.Cuire(gâteauCru).Single();
-                // On boucle plus tard sur ce booléen si il n'est pas à true
-                // Continue est un saut, 
-                // Concrètement , on arrete la chaine d opérations si une de ces derneires à foirer 
                 if(!gâteauCuit.EstConforme) continue;
 
                 var gâteauEmballé = posteEmballage.Emballer(gâteauCuit);

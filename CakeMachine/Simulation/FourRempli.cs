@@ -1,12 +1,11 @@
-
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using CakeMachine.Fabrication;
 using CakeMachine.Fabrication.Elements;
 using CakeMachine.Utils;
 
 namespace CakeMachine.Simulation
 {
-    internal class FourRempli : Algorithme
+    public class FourRempli : Algorithme
     {
         /// <inheritdoc />
         public override bool SupportsSync => true;
@@ -15,13 +14,6 @@ namespace CakeMachine.Simulation
         public override bool SupportsAsync => true;
 
         /// <inheritdoc />
-        public override void ConfigurerUsine(IConfigurationUsine builder)
-        {
-            base.ConfigurerUsine(builder);
-            // builder.NombreEmballeuses = 30;
-            
-        }
-
         public override IEnumerable<GâteauEmballé> Produire(Usine usine, CancellationToken token)
         {
             var postePréparation = usine.Préparateurs.Single();
@@ -30,7 +22,6 @@ namespace CakeMachine.Simulation
 
             while (!token.IsCancellationRequested)
             {
-                
                 var plats = Enumerable.Range(0, usine.OrganisationUsine.ParamètresCuisson.NombrePlaces)
                     .Select(_ => new Plat());
 
@@ -73,6 +64,5 @@ namespace CakeMachine.Simulation
                     yield return gâteauEmballé;
             }
         }
-        
     }
 }

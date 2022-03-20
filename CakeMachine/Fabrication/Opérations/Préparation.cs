@@ -4,7 +4,7 @@ using CakeMachine.Utils;
 
 namespace CakeMachine.Fabrication.Opérations
 {
-    internal class Préparation
+    public class Préparation
     {
         private readonly (TimeSpan Min, TimeSpan Max) _tempsPréparation;
         private readonly ThreadSafeRandomNumberGenerator _rng;
@@ -29,7 +29,7 @@ namespace CakeMachine.Fabrication.Opérations
 
             try
             {
-                Thread.Sleep(TempsPréparation);
+                AttenteIncompressible.Attendre(TempsPréparation);
                 return new GâteauCru(plat, _rng.NextBoolean(1 - _defectRate));
             } 
             finally
@@ -44,7 +44,7 @@ namespace CakeMachine.Fabrication.Opérations
 
             try
             {
-                await Task.Delay(TempsPréparation);
+                await AttenteIncompressible.AttendreAsync(TempsPréparation);
                 return new GâteauCru(plat, _rng.NextBoolean(1 - _defectRate));
             }
             finally
