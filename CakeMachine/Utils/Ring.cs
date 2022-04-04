@@ -13,12 +13,9 @@
         {
             get
             {
-                lock(_elements)
-                {
-                    var element = _elements.Dequeue();
-                    _elements.Enqueue(element);
-                    return element;
-                }
+                var element = _elements.Dequeue();
+                _elements.Enqueue(element);
+                return element;
             }
         }
     }
