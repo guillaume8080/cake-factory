@@ -8,8 +8,8 @@ namespace CakeMachine.Simulation.Algorithmes;
 
 internal class StrategieParallel: Algorithme
 {
-    public override bool SupportsSync => true;
-    public override bool SupportsAsync => false;
+    public override bool SupportsSync => false;
+    public override bool SupportsAsync => true;
 
 
     public override void ConfigurerUsine(IConfigurationUsine builder)
@@ -152,8 +152,10 @@ internal class StrategieParallel: Algorithme
         List<GâteauCuit> lotsGateauxCuits2 = new List<GâteauCuit>();
         GâteauCuit[] array = null;
         ParallelQuery<Task<GâteauCuit[]>> CollectionAsynchroneGateauxCuits = null;
-        Task<GâteauEmballé> tacheEmballage1 = null;
-        Task<GâteauEmballé> tacheEmballage2 = null;
+        IEnumerable<Task<GâteauEmballé>> tacheEmballage1 = null;
+        IEnumerable<Task<GâteauEmballé>> tacheEmballage2 = null;
+        List<GâteauEmballé> listGateauxEmballes = new List<GâteauEmballé>();
+        
         
         
         
@@ -176,17 +178,22 @@ internal class StrategieParallel: Algorithme
             for (int i = 0; i < 2; i++)
             {
                 List<Plat>listeCourante = listList[i];
+                if (i < 1)
+                {
+                    preparationParallele1 = listeCourante.AsParallel().Select(_ => postePreparation1.PréparerAsync(_));    
+                }
                 
-                preparationParallele1 = listeCourante.AsParallel().Select(_ => postePreparation1.PréparerAsync(_));
                 if (i > 0)
                 {
+                   
                     preparationParallele2 = listeCourante.AsParallel().Select(_ => postePreparation2.PréparerAsync(_));
                 }
                
                 
                 
             }
-            // await Task.WhenAny
+            // // Ces deux lignes sont l'exemple de ce qu'ilne faut pas faire:
+            // Mettre en commun des collections dependant de traitement asynchrone
             foreach (var item in preparationParallele1)
             {
                 lotsGateauxCrus.Add(await item);
@@ -226,17 +233,25 @@ internal class StrategieParallel: Algorithme
                 }
             }
 
-            for (int i = 0; i < lotsGateauxCuits.Count / 2; i++)
+            /*for (int i = 0; i < lotsGateauxCuits1.Count ; i++)
             {
                 tacheEmballage1 =  posteEmballage1.EmballerAsync(lotsGateauxCuits1.ElementAt(i));
                 tacheEmballage2 = posteEmballage2.EmballerAsync(lotsGateauxCuits2.ElementAt(i));
                 
                 /*var z = await await Task.WhenAny(x , y);
-                yield return z;*/
-            }
+                yield return z;
+            }*/
+            //lotsGateauxCrus.AsParallel().Select(_ => posteCuisson.CuireAsync(_));
+             tacheEmballage1 = lotsGateauxCuits1.Select(_ => posteEmballage1.EmballerAsync(_));
+             tacheEmballage2 = lotsGateauxCuits2.Select(_ => posteEmballage2.EmballerAsync(_));
+            var arrayOfEmballeGateaux1 = await Task.WhenAll(tacheEmballage1);
+            var arrayOfEmballeGateaux2 = await Task.WhenAll(tacheEmballage2);
+            listGateauxEmballes.AddRange(arrayOfEmballeGateaux1);
+            listGateauxEmballes.AddRange(arrayOfEmballeGateaux2);
 
-            var tabGateauxEmballes = await  Task.WhenAll(tacheEmballage1, tacheEmballage2);
-            foreach (var gateauEmballe in tabGateauxEmballes)
+
+            //var tabGateauxEmballes = await  Task.WhenAll(tacheEmballage1, tacheEmballage2);
+            foreach (var gateauEmballe in listGateauxEmballes)
             {
                 yield return gateauEmballe;
             }

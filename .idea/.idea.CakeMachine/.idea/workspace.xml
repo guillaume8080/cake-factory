@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ea23fe-f1db-4ad8-bd5f-62872d3ed9ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CakeMachine/Utils/FromEnumToCollection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/UsineEtalon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CakeMachine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CakeMachine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Utils/DequeueChunkExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Utils/DequeueChunkExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/AntiRebut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/AntiRebut.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/DeuxParDeux.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/DeuxParDeux.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/DixParDix.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/DixParDix.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/FourRempli.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/FourRempli.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/FourRempliSansRebut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/FourRempliSansRebut.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/Optimisée1Poste.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/Optimisée1Poste.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/SingleThread.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/SingleThread.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +35,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e1805474c885b0d93e37feac28ad9597ab8f2072829c94958e51448f4a4fc85d/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a89c43b9e4639a86ef72bfbdd915cf3a88d4582ea46a7bc809f17b1baa77abf/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b37bab81b84d4b75b664d175034921179e9200/1a/acb73274/IEnumerable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bebd253e21dcf766929bfdfd74615bfe46e6e1693b289273dbdb82152893/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/86d9944d7dc6247b332d77355bfabdb7cd68928cf33921b80ea70c795ef7c26/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d4f98ebdd878db4fbd98872756eb7be6ad9e468fe5cd6b16385d8c4993109a/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4962db4b15d7951593f324f483b8b739df8f2bae5f2fa9175b8bed8e773/TimeSpan.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a64357ccf6e3349d098262337b4a821dfc37ed653d94ada0a8859c6dde/Activator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -88,7 +99,9 @@
       <workItem from="1649272406213" duration="142000" />
       <workItem from="1649318759986" duration="4111000" />
       <workItem from="1649353348599" duration="2386000" />
-      <workItem from="1649400844798" duration="5901000" />
+      <workItem from="1649400844798" duration="6807000" />
+      <workItem from="1649513080297" duration="5280000" />
+      <workItem from="1649528910068" duration="1101000" />
     </task>
     <servers />
   </component>
@@ -111,5 +124,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs</url>
+          <line>91</line>
+          <properties documentPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" initialLine="91" containingFunctionPresentation="method 'Produire'">
+            <startOffsets>
+              <option value="3185" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3212" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
