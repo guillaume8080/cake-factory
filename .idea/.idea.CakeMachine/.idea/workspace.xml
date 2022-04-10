@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ea23fe-f1db-4ad8-bd5f-62872d3ed9ba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/GouyGuillaume.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/GouyGuillaumeEnConstruction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CakeMachine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CakeMachine/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CakeMachine/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/UsineEtalon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/UsineEtalon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="XThreadsFramesViewSplitterKey" value="0.48447895" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.32471263" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -97,7 +98,10 @@
       <workItem from="1649400844798" duration="6807000" />
       <workItem from="1649513080297" duration="5280000" />
       <workItem from="1649528910068" duration="1101000" />
-      <workItem from="1649574689965" duration="2194000" />
+      <workItem from="1649574689965" duration="5060000" />
+      <workItem from="1649580840522" duration="1596000" />
+      <workItem from="1649591652533" duration="6636000" />
+      <workItem from="1649611317206" duration="3176000" />
     </task>
     <servers />
   </component>
@@ -120,24 +124,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs</url>
-          <line>214</line>
-          <properties documentPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" initialLine="214" containingFunctionPresentation="method 'ProduireAsync'">
-            <startOffsets>
-              <option value="7605" />
-            </startOffsets>
-            <endOffsets>
-              <option value="7631" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

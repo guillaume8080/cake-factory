@@ -6,10 +6,10 @@ using CakeMachine.Fabrication.Opérations;
 
 namespace CakeMachine.Simulation.Algorithmes;
 
-internal class StrategieParallel: Algorithme
+internal class GouyGuillaume: Algorithme
 {
     public override bool SupportsSync => true;
-    public override bool SupportsAsync => false;
+    
 
 
     public override void ConfigurerUsine(IConfigurationUsine builder)
@@ -134,134 +134,8 @@ internal class StrategieParallel: Algorithme
         }
     }
     
-    public override async IAsyncEnumerable<GâteauEmballé> ProduireAsync(
-        Usine usine,
-        [EnumeratorCancellation] CancellationToken token)
-    {
-        IEnumerable<Plat> plats = null;
-        List<List<Plat>> listList = null;
-        Préparation postePreparation1 = usine.Préparateurs.First();
-        var postePreparation2 = usine.Préparateurs.Last();
-        Cuisson posteCuisson = usine.Fours.First();
-        Emballage posteEmballage1 = usine.Emballeuses.First();
-        Emballage posteEmballage2 = usine.Emballeuses.Last();
-        ParallelQuery<Task<GâteauCru>> preparationParallele1 = null;
-        ParallelQuery<Task<GâteauCru>>? preparationParallele2 = null;
-        List<GâteauCru> lotsGateauxCrus = new List<GâteauCru>();
-        List<GâteauCuit> lotsGateauxCuits = new List<GâteauCuit>();
-        List<GâteauCuit> lotsGateauxCuits1 = new List<GâteauCuit>();
-        List<GâteauCuit> lotsGateauxCuits2 = new List<GâteauCuit>();
-        GâteauCuit[] array = null;
-        ParallelQuery<Task<GâteauCuit[]>> CollectionAsynchroneGateauxCuits = null;
-        IEnumerable<Task<GâteauEmballé>> tacheEmballage1 = null;
-        IEnumerable<Task<GâteauEmballé>> tacheEmballage2 = null;
-        List<GâteauEmballé> listGateauxEmballes = new List<GâteauEmballé>();
-        
-        
-        
-        
-
-
-
-
-        while (!token.IsCancellationRequested)
-        {
-            IEnumerable<Plat[]> platsChunked = usine.StockInfiniPlats.Chunk(10);
-            foreach (var item in platsChunked)
-            {
-                plats = item;
-                if (plats != null)
-                {
-                    break;
-                }
-            }
-            listList  = ManipulerPréparation(plats, 5);
-            for (int i = 0; i < 2; i++)
-            {
-                List<Plat>listeCourante = listList[i];
-                if (i < 1)
-                {
-                    preparationParallele1 = listeCourante.AsParallel().Select(_ => postePreparation1.PréparerAsync(_));    
-                }
-                
-                if (i > 0)
-                {
-                   
-                    preparationParallele2 = listeCourante.AsParallel().Select(_ => postePreparation2.PréparerAsync(_));
-                }
-               
-                
-                
-            }
-            // // Ces deux lignes sont l'exemple de ce qu'ilne faut pas faire:
-            // Mettre en commun des collections dependant de traitement asynchrone
-            foreach (var item in preparationParallele1)
-            {
-                lotsGateauxCrus.Add(await item);
-            }
-
-            foreach (var item in preparationParallele2)
-            {
-                lotsGateauxCrus.Add(await item);
-            }
-
-            
-            CollectionAsynchroneGateauxCuits  = lotsGateauxCrus.AsParallel().Select(_ => posteCuisson.CuireAsync(_));
-           
-
-            foreach (var item in CollectionAsynchroneGateauxCuits)
-            {
-                //var toto = await await  Task.WhenAny(item);
-                
-                var oneQuery = await item;
-                foreach (var myCake in oneQuery)
-                {
-                    lotsGateauxCuits.Add(myCake);
-                }
-
-            }
-            // var x = posteEmballage1.Emballer(lotsGateauxCuits1.ToArray()[j]);
-            for (int i = 0; i < lotsGateauxCuits.Count ; i++)
-            {
-                if (i < lotsGateauxCuits.Count / 2)
-                {
-                    lotsGateauxCuits1.Add(lotsGateauxCuits.ElementAt(i));
-                }
-
-                if (i > lotsGateauxCuits.Count / 2)
-                {
-                    lotsGateauxCuits2.Add(lotsGateauxCuits.ElementAt(i));
-                }
-            }
-
-            /*for (int i = 0; i < lotsGateauxCuits1.Count ; i++)
-            {
-                tacheEmballage1 =  posteEmballage1.EmballerAsync(lotsGateauxCuits1.ElementAt(i));
-                tacheEmballage2 = posteEmballage2.EmballerAsync(lotsGateauxCuits2.ElementAt(i));
-                
-                /*var z = await await Task.WhenAny(x , y);
-                yield return z;
-            }*/
-            //lotsGateauxCrus.AsParallel().Select(_ => posteCuisson.CuireAsync(_));
-             tacheEmballage1 = lotsGateauxCuits1.Select(_ => posteEmballage1.EmballerAsync(_));
-             tacheEmballage2 = lotsGateauxCuits2.Select(_ => posteEmballage2.EmballerAsync(_));
-            var arrayOfEmballeGateaux1 = await Task.WhenAll(tacheEmballage1);
-            var arrayOfEmballeGateaux2 = await Task.WhenAll(tacheEmballage2);
-            listGateauxEmballes.AddRange(arrayOfEmballeGateaux1);
-            listGateauxEmballes.AddRange(arrayOfEmballeGateaux2);
-
-
-            //var tabGateauxEmballes = await  Task.WhenAll(tacheEmballage1, tacheEmballage2);
-            foreach (var gateauEmballe in listGateauxEmballes)
-            {
-                yield return gateauEmballe;
-            }
-
-
-
-
-        }
-    }
+   
+    
     
     
     public List<List<Plat>> ManipulerPréparation(IEnumerable<Plat> enumPLat , ushort diviseur)

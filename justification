@@ -1,0 +1,10 @@
+--> Voici les fondements de ma simulation de cakeFActory.
+
+--> La première : garbage collector. L'algorithme produit, tache de créer le minimum de variables,ce qui est le plus coûteux en ressources.
+--> La seconde : le profiling. En profilant cakeFactory , j'ai constaté que le four produisait 5 fois plus en 2 fois moins de temps qu'un poste de préparation.
+--> La troisième : l'arithmétique. L'échaffaudage de cet algo tient du bon sens!
+--> La quatrième : préférer le parrallelisme à l'asynchrone.Je parle de AsParrallel qui peutmême être un traitement asynchrone. 
+		   L'asynchrone me pose deux problèmes majeurs:
+		   le premier , je n'ai pas assez de pratique, produire de l'asynchrone est trop coûteux en terme de varibales.
+		   Le second, je n'arrive pas à avoir la main sur l'exécution de ma simulation.
+		  
