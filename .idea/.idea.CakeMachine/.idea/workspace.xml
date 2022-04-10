@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ea23fe-f1db-4ad8-bd5f-62872d3ed9ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/UsineEtalon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CakeMachine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CakeMachine/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CakeMachine/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/AntiRebut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/AntiRebut.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/DeuxParDeux.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/DeuxParDeux.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/DixParDix.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/DixParDix.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/FourRempli.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/FourRempli.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/FourRempliSansRebut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/FourRempliSansRebut.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/Optimisée1Poste.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/Optimisée1Poste.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/SingleThread.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/SingleThread.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/UsineEtalon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/UsineEtalon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +34,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/86d9944d7dc6247b332d77355bfabdb7cd68928cf33921b80ea70c795ef7c26/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d4f98ebdd878db4fbd98872756eb7be6ad9e468fe5cd6b16385d8c4993109a/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1ff8277bc7809525a9a9582aa68643d077f2447d1771cf2afb03fb8121a9b97/PartitionedDataSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4962db4b15d7951593f324f483b8b739df8f2bae5f2fa9175b8bed8e773/TimeSpan.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9a64357ccf6e3349d098262337b4a821dfc37ed653d94ada0a8859c6dde/Activator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -56,6 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="XThreadsFramesViewSplitterKey" value="0.48447895" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -102,6 +97,7 @@
       <workItem from="1649400844798" duration="6807000" />
       <workItem from="1649513080297" duration="5280000" />
       <workItem from="1649528910068" duration="1101000" />
+      <workItem from="1649574689965" duration="2194000" />
     </task>
     <servers />
   </component>
@@ -130,16 +126,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs</url>
-          <line>91</line>
-          <properties documentPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" initialLine="91" containingFunctionPresentation="method 'Produire'">
+          <line>214</line>
+          <properties documentPath="$PROJECT_DIR$/CakeMachine/Simulation/Algorithmes/StrategieParallel.cs" initialLine="214" containingFunctionPresentation="method 'ProduireAsync'">
             <startOffsets>
-              <option value="3185" />
+              <option value="7605" />
             </startOffsets>
             <endOffsets>
-              <option value="3212" />
+              <option value="7631" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

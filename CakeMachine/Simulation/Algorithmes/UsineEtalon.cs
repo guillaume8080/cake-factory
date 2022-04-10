@@ -10,7 +10,7 @@ namespace CakeMachine.Simulation.Algorithmes
     internal class UsineEtalon : Algorithme
     {
         /// <inheritdoc />
-        public override bool SupportsAsync => false;
+        public override bool SupportsAsync => true;
 
         /// <inheritdoc />
         public override void ConfigurerUsine(IConfigurationUsine builder)

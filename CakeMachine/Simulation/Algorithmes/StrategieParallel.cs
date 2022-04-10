@@ -8,8 +8,8 @@ namespace CakeMachine.Simulation.Algorithmes;
 
 internal class StrategieParallel: Algorithme
 {
-    public override bool SupportsSync => false;
-    public override bool SupportsAsync => true;
+    public override bool SupportsSync => true;
+    public override bool SupportsAsync => false;
 
 
     public override void ConfigurerUsine(IConfigurationUsine builder)
